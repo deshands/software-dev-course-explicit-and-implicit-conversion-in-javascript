@@ -22,11 +22,28 @@ Use console.log() to clearly show the before-and-after type conversions.
 let result = "5" - 2;
 console.log("The result is: " + result);
 
-let isValid = Boolean("false");
+//Fix: Explicit check using string comparison,or convert correctly.
+let isValid = ("false" === "true");  //This makes it fasle 
 if (isValid) {
     console.log("This is valid!");
+} else {
+  console.log("This is valid!");
 }
 
 let age = "25";
-let totalAge = age + 5;
-console.log("Total Age: " + totalAge);
+let totalAge = Number(age) + 5; //Explicity convert ti a number
+console.log("Total Age after fix: " + totalAge);
+
+//---------Part 2: My Own Examples ---------
+
+//Implicit conversion example
+//"10" * 2 implicitly converts "10" to number
+let implicitExample = "10" * 2;
+console.log("Implicit Example (\"10\" * 2):", implicitExample);
+
+//Explicit conversion example
+let explicitExample = String(123); // number -> string
+console.log("Explicit Example (Number to String):", explicitExample);
+// Edge case: NaN with explicit conversion
+let edgeCase = Number("hello"); // "hello" cannot be converted to a number
+console.log("Edge Case (Number(\"hello\")):", edgeCase); // NaN
